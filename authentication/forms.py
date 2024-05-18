@@ -7,7 +7,7 @@ from .models import User
 class SignupForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = get_user_model()
-        fields = ('username', 'email', 'first_name', 'last_name', 'date_de_naissance', 'localisation', 'numero_de_tel')
+        fields = ('username', 'email', 'first_name', 'last_name', 'date_de_naissance', 'localisation', 'numero_de_tel','photo_de_profile')
 
 class LoginForm(forms.Form):
     username = forms.CharField(max_length=63, label='Nom d’utilisateur')

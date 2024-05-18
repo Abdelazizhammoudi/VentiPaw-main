@@ -8,6 +8,13 @@ import dj_database_url
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
+# Cloudinary imports
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
+
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
@@ -27,7 +34,9 @@ INSTALLED_APPS = [
     'articles',
     'authentication',
     'profiles',
-     'dj_database_url',
+    'dj_database_url',
+    'cloudinary',
+    'cloudinary_storage',
 
 #importing rest framwork applications for authentications and login and out 
     'rest_framework',
@@ -51,6 +60,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
 
 #CORS and sets which domains will have access to my api
 CORS_ORIGIN_WHITELIST = (
@@ -148,7 +158,7 @@ WSGI_APPLICATION = 'venti.wsgi.application'
 # }
 
 # Set the database URL in the environment variables
-os.environ['DATABASE_URL'] = 'https://venti-12583-default-rtdb.europe-west1.firebasedatabase.app'
+os.environ['DATABASE_URL'] = 'postgres://venti_user:KQJq0fdsTeolqFyaetZxWVV5YxXbQ056@dpg-cp4c8h779t8c73ee186g-a.oregon-postgres.render.com/venti_db_eqf3'
 
 # Configure the DATABASES setting
 DATABASES = {
@@ -203,6 +213,18 @@ LOGIN_REDIRECT_URL = 'liste-des-articles'
 
 LOGOUT_URL = 'logout' 
 
-MEDIA_URL = 'https://venti-12583-default-rtdb.europe-west1.firebasedatabase.app'
+MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+#cmoudinary settings for uploading pictures 
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+cloudinary.config(
+cloud_name = "ddov12iy7",
+api_key = "356742567121426",
+api_secret = "pN9mH8T3xli6wNbzFBBGxJHFLE8",
+)
+
+
+
