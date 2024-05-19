@@ -1,3 +1,4 @@
+from django.conf import settings
 from requests import request
 from rest_framework import serializers
 from .models import Article ,Favoris , Comment, Like, Notification
@@ -27,6 +28,8 @@ class ArticleSerializer(serializers.ModelSerializer):
     is_liked = serializers.SerializerMethodField(read_only=True)
     is_saved = serializers.SerializerMethodField(read_only=True)
     photo_de_profile = serializers.SerializerMethodField()
+    photo = serializers.SerializerMethodField()
+
     class Meta:
         model = Article
         fields = ['id',
@@ -73,7 +76,14 @@ class ArticleSerializer(serializers.ModelSerializer):
             return request.build_absolute_uri(instance.auteur.photo_de_profile.url)
         else:
             return None
-        
+
+
+    def get_photo(self, instance):
+        request = self.context.get('request')
+        if instance.photo and request:
+            return request.build_absolute_uri(instance.photo.url)
+        return None
+
 #favoris serializers 
 class FavoriteSerializer(serializers.ModelSerializer):
     article = ArticleSerializer(read_only=True)

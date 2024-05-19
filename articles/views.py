@@ -29,6 +29,7 @@ class ArticleRetrieveView(generics.RetrieveAPIView):
     serializer_class = ArticleSerializer
     permission_classes = []
 
+
 #1 ajouter des condition de permission et que l'auteur de l'article est le seule qui peut acceder a ces fonctionnalité
 class IsArticleOwner(permissions.BasePermission):
     def has_object_permission(self, request, view, obj):

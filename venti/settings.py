@@ -213,9 +213,9 @@ LOGIN_REDIRECT_URL = 'liste-des-articles'
 
 LOGOUT_URL = 'logout' 
 
-MEDIA_URL = '/media/'
+# MEDIA_URL = '/media/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 #cmoudinary settings for uploading pictures 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
