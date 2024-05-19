@@ -77,7 +77,6 @@ class ArticleSerializer(serializers.ModelSerializer):
         else:
             return None
 
-
     def get_photo(self, instance):
         request = self.context.get('request')
         if instance.photo and request:
