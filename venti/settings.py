@@ -75,9 +75,12 @@ CORS_ALLOW_CREDENTIALS = True
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",  # Add your React.js app's URL
+    "https://venti-algeria.netlify.app",
 ]
 
-CSRF_TRUSTED_ORIGINS = ["http://localhost:3000"]#port 3000 used by react js 
+CSRF_TRUSTED_ORIGINS = ["http://localhost:3000",
+                        "https://venti-algeria.netlify.app"
+                        ]#port 3000 used by react js 
 
 
 #added for authentication and permissions 
